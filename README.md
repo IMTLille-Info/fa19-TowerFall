@@ -2,7 +2,7 @@
 
 Petit rassemblement des idées du site (mini cahier des charge) :
 
-//Interface
+##Interface
 
 - Une page de Menu rassemblant au moins : <GAME> (démarrage de partie en passant par une fenetre de réglage de partie) | <FastGame> (demarrage de la partie sans réglage au préalable (mise a part le nombre de joueurs)) | <Option> (Permettant pour le moment de régler les touches des différents joueurs) | <Exit> (ferme le jeu)
 
@@ -15,7 +15,7 @@ Les différentes variables affectés seraient : Nb de Joueurs (int) | Bonus (boo
 
 - Une page de Jeu principal : Pas besoin d'expliquer.
 
- // Mécanique du jeu (idées du TP) :
+##Mécanique du jeu (idées du TP) :
     Tower Fall Like :
     - Deux personnages (voir plus par la suite) capacités identiques avec armes corps à corps et à distance
     - Bonus aléatoires
@@ -24,10 +24,26 @@ Les différentes variables affectés seraient : Nb de Joueurs (int) | Bonus (boo
     - Armes flèches :
         -> munitions limitées ou Timer (tirs toutes les 2s)
     - Destruction des décors
+## Minimum requis
+    - 3 rounds
+    -une map 2D fixe
+    - plateforme + vide + 4 zones bonus aléatoires
+    - 2 joueurs
+    - une touche attaque
+    - 4 directions
+    - 5 munitions / 3 vies
 
   Modes de jeu :
      - Temps réel : Thread ?
      - Multijoueur avec serveur et client embarqué
      
- // Conception du code
+     
+##Conception du code
  -Concevoir un code qui puisse être évolutif
+ -JMonkey
+  - Terrain
+  - Input
+  - Physique
+  - Geometry
+  
+

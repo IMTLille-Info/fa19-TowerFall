@@ -8,6 +8,7 @@ public class Main {
 		  fen = new Fenetre();
 		  while (true){
 			  fen.repaint();
+			//  System.out.println(fen.selector);
 		  }
 	}
 }

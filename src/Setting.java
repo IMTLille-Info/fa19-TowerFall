@@ -1,23 +1,30 @@
 import java.awt.event.KeyEvent;
 
 public class Setting {
-	char J1_UP=KeyEvent.VK_UP;
-	char J1_DOWN=KeyEvent.VK_DOWN;
-	char J1_LEFT=KeyEvent.VK_LEFT;
-	char J1_RIGHT=KeyEvent.VK_RIGHT;
+	int J1_UP=KeyEvent.VK_UP;
+	int J1_DOWN=KeyEvent.VK_DOWN;
+	int J1_LEFT=KeyEvent.VK_LEFT;
+	int J1_RIGHT=KeyEvent.VK_RIGHT;
+	int J1_ACTION=KeyEvent.VK_ENTER;
 	
-	char J2_UP='z';
-	char J2_DOWN='s';
-	char J2_LEFT='d';
-	char J2_RIGHT='q';
+	int J2_UP=KeyEvent.VK_Z;
+	int J2_DOWN=KeyEvent.VK_S;
+	int J2_LEFT=KeyEvent.VK_Q;
+	int J2_RIGHT=KeyEvent.VK_D;
+	int J2_ACTION=KeyEvent.VK_E;
 	
-	char J3_UP='8';
-	char J3_DOWN='5';
-	char J3_LEFT='4';
-	char J3_RIGHT='6';
+	int J3_UP=KeyEvent.VK_NUMPAD8;
+	int J3_DOWN=KeyEvent.VK_NUMPAD5;
+	int J3_LEFT=KeyEvent.VK_NUMPAD4;
+	int J3_RIGHT=KeyEvent.VK_NUMPAD6;
+	int J3_ACTION=KeyEvent.VK_NUMPAD7;
 	
-	char J4_UP='i';
-	char J4_DOWN='k';
-	char J4_LEFT='j';
-	char J4_RIGHT='l';
+	int J4_UP=KeyEvent.VK_I;
+	int J4_DOWN=KeyEvent.VK_K;
+	int J4_LEFT=KeyEvent.VK_J;
+	int J4_RIGHT=KeyEvent.VK_L;
+	int J4_ACTION=KeyEvent.VK_U;
+	
+	public Setting(){
+	}
 }

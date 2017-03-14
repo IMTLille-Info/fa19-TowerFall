@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 
 import javafx.event.Event;
 
@@ -27,28 +28,27 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
-public class Fenetre extends JFrame implements KeyListener{
+public class Menu extends JPanel implements KeyListener{
 	
 	int selector=0;
-	Setting set=new Setting();
-	
+	boolean opt=false;
     JButton bout1=new JButton("GAME");
     JButton bout2=new JButton("Fast GAME");
     JButton bout3=new JButton("OPTION");
     JButton bout4=new JButton("EXIT");
     List<JButton> bout=Arrays.asList(bout1,bout2,bout3,bout4);
 	
-	public Fenetre() throws IOException{
+	public Menu() throws IOException{
+		this.setLayout(null);
 		Jukebox juke=new Jukebox(-1);
 		juke.start();
-		this.setTitle("Unicorn ISLAND");
-		this.setMinimumSize(new Dimension(1200,800));
-		this.setSize(1200,800 );
-		this.setLocationRelativeTo(null);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-	    this.setResizable(false);
 	    GridLayout gl=new GridLayout(4,1,100,75);
 	    mouseDeclaration();
+	    bout3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event) {
+					opt=true;
+			}
+	    });
 	    bout4.addActionListener(new ActionListener(){
 	    	  public void actionPerformed(ActionEvent event){
 	    		  juke.stop();
@@ -58,6 +58,7 @@ public class Fenetre extends JFrame implements KeyListener{
 	    
 	    JPanel pan=new JPanel(gl);
 	    pan.setSize(800, 550);
+	    pan.setMaximumSize(new Dimension(800,550));
 	    pan.setOpaque(false);
 	    selector();
 	    pan.add(bout1);
@@ -79,52 +80,47 @@ public class Fenetre extends JFrame implements KeyListener{
 	    this.add(pan3);
 	    this.add(pan);
 	    this.add(pan2);
-	    this.pack();
-		this.setVisible(true);
 	}
 	
 	public void selector(){
+		bout1.setForeground(Color.BLACK);
+		bout2.setForeground(Color.BLACK);
+		bout3.setForeground(Color.BLACK);
+		bout4.setForeground(Color.BLACK);
 		if (selector==0){
 			bout1.setForeground(Color.RED);
-			bout2.setForeground(Color.BLACK);
 		}else if(selector==1){
-			bout1.setForeground(Color.BLACK);
 			bout2.setForeground(Color.RED);
-			bout3.setForeground(Color.BLACK);
 		}else if(selector==2){
-			bout2.setForeground(Color.BLACK);
 			bout3.setForeground(Color.RED);
-			bout4.setForeground(Color.BLACK);
 		}else if(selector==3){
-			bout3.setForeground(Color.BLACK);
 			bout4.setForeground(Color.RED);
 		}
 	}
 	
 	public void exit(){
-		this.dispose();
 		System.exit(0);
 	}
 
 	@Override
 	public void keyPressed(KeyEvent event) {
 		int source=event.getKeyCode();
-		if (source==set.J1_UP || source==set.J2_UP || source==set.J3_UP || source==set.J4_UP){
+		if (source==Setting.J1_UP || source==Setting.J2_UP || source==Setting.J3_UP || source==Setting.J4_UP){
 			if (selector>0){
 				selector--;
 			}
-		}else if(source==set.J1_DOWN || source==set.J2_DOWN || source==set.J3_DOWN || source==set.J4_DOWN){
+		}else if(source==Setting.J1_DOWN || source==Setting.J2_DOWN || source==Setting.J3_DOWN || source==Setting.J4_DOWN){
 			if (selector<bout.size()-1){
 				selector++;
 			}
-		}else if(source==set.J1_ACTION || source==set.J2_ACTION || source==set.J3_ACTION || source==set.J4_ACTION){
+		}else if(source==Setting.J1_ACTION || source==Setting.J2_ACTION || source==Setting.J3_ACTION || source==Setting.J4_ACTION){
 			if (bout.get(selector).getActionListeners().length!=0){
 				bout.get(selector).getActionListeners()[0].actionPerformed(null);
 			}
 		}
 		selector();
 	}
-
+	
 	@Override
 	public void keyReleased(KeyEvent event) {
 		// TODO Auto-generated method stub

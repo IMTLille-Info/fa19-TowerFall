@@ -24,13 +24,21 @@ public class Main {
 				  menu.hide();
 				  fen.remove(menu);
 				  fen.add(opt);
+				  opt.grabFocus();
+				  opt.removeKeyListener(opt);
+				  opt.addKeyListener(opt);
 				  opt.show();
+				  opt.requestFocusInWindow();
 			  }else if(opt.opt==true){
 				  opt.opt=false;
 				  opt.hide();
 				  fen.remove(opt);
 				  fen.add(menu);
+				  menu.grabFocus();
+				  menu.removeKeyListener(menu);
+				  menu.addKeyListener(menu);
 				  menu.show();
+				  menu.requestFocusInWindow();
 			  }else{
 				  menu.repaint();
 				  opt.repaint();

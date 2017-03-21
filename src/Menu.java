@@ -66,6 +66,9 @@ public class Menu extends JPanel implements KeyListener{
 	    pan.add(bout3);
 	    pan.add(bout4);
 	    this.bout1.addKeyListener(this);
+	    this.bout2.addKeyListener(this);
+	    this.bout3.addKeyListener(this);
+	    this.bout4.addKeyListener(this);
 	    JPanel pan2=new JPanel();
 	    JPanel pan3=new JPanel();
 	    JLabel lab=new JLabel(new ImageIcon("lib/background/menu.gif"));

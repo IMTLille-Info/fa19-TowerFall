@@ -27,30 +27,5 @@ public class Setting {
 	
 	public Setting(){
 	}
-	
-	public void setJ1_UP(int key){
-		J1_UP=key;
-	}
-	public void setJ2_UP(int key){
-		J2_UP=key;
-	}
-	public void setJ3_UP(int key){
-		J3_UP=key;
-	}
-	public void setJ4_UP(int key){
-		J4_UP=key;
-	}
-	
-	public void setJ1_DOWN(int key){
-		J1_DOWN=key;
-	}
-	public void setJ2_DOWN(int key){
-		J2_DOWN=key;
-	}
-	public void setJ3_DOWN(int key){
-		J3_DOWN=key;
-	}
-	public void setJ4_DOWN(int key){
-		J4_DOWN=key;
-	}
+
 }

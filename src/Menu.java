@@ -32,18 +32,27 @@ public class Menu extends JPanel implements KeyListener{
 	
 	int selector=0;
 	boolean opt=false;
+	boolean game=false;
     JButton bout1=new JButton("GAME");
     JButton bout2=new JButton("Fast GAME");
     JButton bout3=new JButton("OPTION");
     JButton bout4=new JButton("EXIT");
     List<JButton> bout=Arrays.asList(bout1,bout2,bout3,bout4);
-	
+    Jukebox juke=null;
 	public Menu() throws IOException{
 		this.setLayout(null);
-		Jukebox juke=new Jukebox(-1);
+		juke=new Jukebox(-1);
 		juke.start();
 	    GridLayout gl=new GridLayout(4,1,100,75);
 	    mouseDeclaration();
+	    bout1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event) {
+					juke.stop();
+					juke=new Jukebox(juke.RAND);
+					juke.start();
+					game=true;
+			}
+	    });
 	    bout3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event) {
 					opt=true;

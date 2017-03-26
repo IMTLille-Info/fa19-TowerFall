@@ -39,6 +39,15 @@ public class Main {
 				  menu.addKeyListener(menu);
 				  menu.show();
 				  menu.requestFocusInWindow();
+			  }else if(menu.game==true){
+				  menu.game=false;
+				  menu.hide();
+				  fen.remove(menu);
+				  fen.hide();
+				  menu.removeKeyListener(menu);
+				  Application.getMyFenetre().loadMap(ApplicationInfo.getPathMedia() + "Map1.txt");
+				  Application.getMyFenetre().requestFocusInWindow();
+				  Map.updateMap();
 			  }else{
 				  menu.repaint();
 				  opt.repaint();

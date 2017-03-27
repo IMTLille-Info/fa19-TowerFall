@@ -1,0 +1,19 @@
+Je fais souvent reférénce aux classes Menu et Option, elle ne sont pas dans mes sources c'est Flo qui les a faites. Je ne les ai pas encore implémentés car il est difficile de fusionner ses classes sans "casser" notre structure actuelle. En totu cas j'y ai pas encore assez réfléchi
+
+
+Est-il préférable d'implémenter les Panneau (Map, Option, Menu) comme des méthodes de MyPanneau ou alors chacun séparemment comme une classe hérité de Panneau. Le premier cas permet dans MyFenetre de ne créer qu'un objet de type MyPanneau qui s'efface et se redessinne en fct de la méthode (loadMap, loadOption, ...) utilisée.
+L'autre cas lui permet un code moins chargé mais recrée un objet Map, Option ou Menu par dessus un ancien objet d'un de ces types.
+Je préférerais la deuxieme option si j'étais certain que les objets écrasés ne restaient pas en mémoire, cela pourrait poser des soucis de lenteurs, à vérifier.... (garbage collector????)
+
+
+Actuellement la liste des joueurs est déifni dans Application, j'ai fait cela pour vous proposer rapidement une V1 du projet, mais pour moi cette liste de joueurs et toute la gestion qui en découle aurait plutt sa place dans la classe MyPanneau (ou Map selon la solution utilisée au dessus). Cela semblerait plus logique mais l'implémentation est un peu plus casse couille et je préférais me décider sur la première question avant celle ci sous peine de devoir tout rechanger.
+
+
+Attributs public dans Map a changer en privé mais nécéssite de créer leur accesseurs sinon Avatars ne amrchera plus.
+
+La classe Map a une méthode updateMap en static, c'est une mauvaise idée car cela pète certains logique de notre conception. Cependant si elle n'est pas static il faudrait l'appelé par la façon suivante: 
+Application.getMyFenetre().getP().updateMap();
+Cependant lors de l'appel la commande précédente essaie d'appliquer un updateMap() sur un objet Panneau, or c'est sur un objet Map.
+C'est la conséquence de notre choix de création de map actuelle, je n'ai pas encore réfléchi sur comment régler cela, créer des classes différentes pour Map, Option et Menu, et autre apsect graphique est très bien mais nous impose ce genre de soucis. On pourrait rajouter un attribut Map à MyFenetre mais je n'aime pas l'idée qu'une MyFenetre possède un attribut Panneau p, Map map, Menu menu, Option option.
+Cela n'est pas terrible et dupplique les JPanel qui sont en théorie chacun un tableau blanc, donc la logique serait un tableau blanc pour géretr tous ses aspects. Mais je pense que c'est une remarque très interessante à expliquer ua prof lors de la soutenance.
+

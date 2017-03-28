@@ -38,7 +38,7 @@ public class Bullet extends Texture{
 		}
 		else if(img.contains("Right")){
 			setDirection(direct.RIGHT);
-			this.getA().setX(Map.avatars.get(n).getA().getX()+this.getLargeur());
+			this.getA().setX(Map.avatars.get(n).getB().getX());
 			this.getA().setY(Map.avatars.get(n).getA().getY()+Map.avatars.get(n).getHauteur()/2);
 			this.getB().setX(Map.avatars.get(n).getB().getX()+this.getLargeur());
 			this.getB().setY(Map.avatars.get(n).getB().getY()+Map.avatars.get(n).getHauteur()/2);
@@ -47,7 +47,7 @@ public class Bullet extends Texture{
 			setDirection(direct.LEFT);
 			this.getA().setX(Map.avatars.get(n).getA().getX()-this.getLargeur());
 			this.getA().setY(Map.avatars.get(n).getA().getY()+Map.avatars.get(n).getHauteur()/2);
-			this.getB().setX(Map.avatars.get(n).getA().getX()-this.getLargeur());
+			this.getB().setX(Map.avatars.get(n).getA().getX());
 			this.getB().setY(Map.avatars.get(n).getB().getY()+Map.avatars.get(n).getHauteur()/2);
 		}
 

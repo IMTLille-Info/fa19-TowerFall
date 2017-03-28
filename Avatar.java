@@ -17,6 +17,7 @@ public class Avatar extends Texture{
 	private boolean jump = false;
 	private direct lastDirection;
 	private long lastShot = 0;
+	private boolean onPlatform = false;
 
 
 	// --------------------- Getters & Setters --------------------- //
@@ -143,14 +144,14 @@ public class Avatar extends Texture{
 	public boolean interactionObstacle(){
 		boolean test = false;
 		for (Obstacle i : Map.obstacles) {
-			if(this.intersection(i)){
+			if(this.getA().getY() == i.getB().getY() && this.getB().getX()>i.getA().getX() && this.getA().getX() <i.getB().getX()){
+				onPlatform = true;
 				test = true;
 				speedFall = 0;
-				jump = false;
-				System.out.println("YOLO");
 			}
 			else{
-				speedFall = 2;
+				onPlatform = false;
+				speedFall = 1;
 			}
 		}
 		return test;
@@ -185,22 +186,23 @@ public class Avatar extends Texture{
 				speedJump = 7;
 			}
 
-			if(!interactionObstacle()){
+			if(!interactionObstacle() ){
 				//Fall
 					if(!jump && this.getA().getY() == 65){
 						speedFall = 0;
 					}
-					else if(!jump && this.getA().getY() > 65){
+					else 	if(!jump && this.getA().getY() > 65){
 						if(this.getA().getY()-speedFall <= 65){
-							this.getA().setY(65);
-							this.getB().setY(65+this.getHauteur());
-						}
-						if(this.getA().getY()-speedFall > 65){
+						 	this.getA().setY(65);
+						 	this.getB().setY(65+this.getHauteur());
+						 }
+						else if(this.getA().getY()-speedFall > 65){
 							if(speedFall == 0)
 								speedFall = 1;
 							this.getA().setY(this.getA().getY()-(int)speedFall);
 							this.getB().setY(this.getB().getY()-(int)speedFall);
-							speedFall+=0.1;
+							//speedFall+=1;
+							System.out.println(speedFall);
 						}
 					}
 				else{
